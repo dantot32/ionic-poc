@@ -13,7 +13,7 @@ export class TempContactRepository implements IContactRepository {
       throw new Error('Method not implemented.');
   }
   async getAll(): Promise<Contact[]> {
-    var c = new Contact("Dan","d.surname@temp.it")
+    var c = new Contact()
     return [c]
   }
 
