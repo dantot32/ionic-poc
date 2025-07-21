@@ -13,16 +13,28 @@
         </ion-toolbar>
       </ion-header>
 
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+      <ion-list>
+        <ion-item v-for="u in users" :key="u.id">
+          {{ u.name }} - {{ u.email }}
+        </ion-item>
+      </ion-list>
+
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { ref, onMounted } from 'vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem } from '@ionic/vue';
+import { initDb, createUser, readUsers, updateUser, deleteUser } from '../data/useDb';
+
+const users = ref<any[] | undefined>([]);
+
+// onMounted(async () => {
+//   await initDb();
+//   await createUser("Mario", "mario@example.com");
+//   users.value = await readUsers();
+// });
 </script>
 
 <style scoped>
